@@ -59,62 +59,30 @@ class _NewsTileState extends State<NewsTile> {
                               Theme.of(context).accentColor.withOpacity(0.8)),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 55,
-                        child: TextButton(
-                          onPressed: () {
-                            _launchBrowser(widget.feed.link + '#comments');
-                          },
-                          child: Icon(
-                            Icons.message_outlined,
-                            size: 17.0,
-                            color: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .color!
-                                .withOpacity(0.7),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            primary: Theme.of(context).cardTheme.color,
-                            onPrimary: Theme.of(context).accentColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                          ),
+                  Container(
+                    width: 55,
+                    child: TextButton(
+                      onPressed: () {
+                        Share.share(widget.feed.link);
+                      },
+                      child: Icon(
+                        Icons.share_outlined,
+                        size: 17.0,
+                        color: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .color!
+                            .withOpacity(0.7),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        primary: Theme.of(context).cardTheme.color,
+                        onPrimary: Theme.of(context).accentColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        width: 55,
-                        child: TextButton(
-                          onPressed: () {
-                            Share.share(widget.feed.link);
-                          },
-                          child: Icon(
-                            Icons.share_outlined,
-                            size: 17.0,
-                            color: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .color!
-                                .withOpacity(0.7),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            primary: Theme.of(context).cardTheme.color,
-                            onPrimary: Theme.of(context).accentColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),

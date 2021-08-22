@@ -5,7 +5,7 @@ import 'package:verge_rss/util/changelog.dart';
 class AppInfoPage extends StatelessWidget {
 
   _launchGithub()  {
-    const url = 'https://github.com/Fschmatz/android_police_rss';
+    const url = 'https://github.com/Fschmatz/verge_rss';
     launch(url);
   }
 
@@ -52,28 +52,6 @@ class AppInfoPage extends StatelessWidget {
           ListTile(
             leading: Icon( Icons.info_outline),
             title: Text(
-              "HAMMERED AND REDONE: 0 Times !!!",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: SizedBox(
-              height: 0.1,
-            ),
-            title: Text(
-              "( This is The Way! )",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: SizedBox(
-              height: 0.1,
-            ),
-            title: Text(
               "Application created using Flutter and the Dart language, used for testing and learning.",
               style: TextStyle(
                 fontSize: 16,
@@ -113,7 +91,7 @@ class AppInfoPage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.messenger_outline),
             title: Text(
-              "Knowledge, like air, is vital to life. Like air, no one should be denied it.\nAlan Moore",
+              "We're not in an information age anymore. We're in the information management age.",
               style: TextStyle(fontSize: 16),
             ),
           ),

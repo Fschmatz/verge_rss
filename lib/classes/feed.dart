@@ -11,4 +11,9 @@ class Feed {
   get formattedDate{
     return Jiffy(this.data).format("dd/MM/yyyy");
   }
+
+  @override
+  String toString() {
+    return 'Feed{title: $title, link: $link, data: $data}';
+  }
 }

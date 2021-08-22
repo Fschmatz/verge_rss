@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   static const String feedUrl = 'https://www.theverge.com/rss/index.xml';
-  List<RssItem> articlesList = [];
+  List<AtomItem> articlesList = [];
   bool loading = true;
 
   @override
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
   Future<void> getRssData() async {
     var client = http.Client();
     var response = await client.get(Uri.parse(feedUrl));
-    var channel = RssFeed.parse(response.body);
+    var channel = AtomFeed.parse(response.body);//Feed.parse(response.body);
     setState(() {
       articlesList = channel.items!.toList();
       loading = false;
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('Android Police'),
+        title: Text('The Verge'),
         actions: [
           IconButton(
               icon: Icon(
@@ -75,34 +75,23 @@ class _HomeState extends State<Home> {
                     children: [
                       ListView.separated(
                         separatorBuilder: (context, index) {
-                          if (!articlesList[index]
-                              .categories![1]
-                              .value
-                              .contains('Sponsored')) {
-                            return const Divider();
-                          }
-                          return SizedBox.shrink();
+                         return const Divider();
                         },
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: articlesList.length,
                         itemBuilder: (context, index) {
-                          if (!articlesList[index]
-                              .categories![1]
-                              .value
-                              .contains('Sponsored')) {
-                            return NewsTile(
-                              feed: Feed(
-                                  data: articlesList[index].pubDate!.toString(),
-                                  title: articlesList[index].title!,
-                                  link: articlesList[index].link!),
-                            );
-                          }
-                          return SizedBox.shrink();
+                          return NewsTile(
+                            feed: Feed(
+                                data: articlesList[index].published!,
+                                title: articlesList[index].title!,
+                                link: articlesList[index].links![0].href!
+                              ),
+                          );
                         },
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 30,
                       )
                     ]),
               ),
